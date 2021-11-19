@@ -2,14 +2,25 @@
 {% block main-content %}
 <div class="container">
     <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{movie.panner.url}}" alt="{{movie.panner.url}}">
       <div class="card-body">
-        <h5 class="card-title">{{movie.id}}</h5>
-        <p class="card-text">{{movie.description}</p>
+        <h5 class="card-title">{{movie.name}}</h5>
+        <p class="card-text">{{movie.description}}</p>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">likes: {{movie.likes}} </li>
         <li class="list-group-item">rate: {{movie.rate}}</li>
         <li class="list-group-item">watch_count: {{movie.watch_count}}</li>
+      </ul>
+      <ul class="list-group list-group-flush">
+        {% for actor in movie.actors.all %}
+          <li>{{actor.name}}</li>
+        {% endfor %}
+      </ul>
+      <ul class="list-group list-group-flush">
+        {% for review in movie.review_set.all %}
+          <li>{{review.comment}}</li>
+        {% endfor %}
       </ul>
       <div class="card-body">
         <a href="{% url 'movies:index' %}" class="btn btn-primary">Back to list</a>

@@ -20,6 +20,7 @@ def movie_create(request):
 
 def movie_details(request, movie_id):
     element = movie.objects.get(pk=movie_id)
+    print(element.actors)
     return render(request, "movies/details.html", context={'movie': element})
 
 def update_movie(request, movie_id):

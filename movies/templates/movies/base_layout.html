@@ -8,19 +8,25 @@
 </head>
 <body>
     <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'logout' %}">logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'login' %}">login</a>
+            </li>
+        {% endif%}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'movies:index' %}">movie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'todo:index' %}">todo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="">signup</a>
+          </li>
+    </ul>
 {% block main-content %}
 {% endblock %}
 </body>

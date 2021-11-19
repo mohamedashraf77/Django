@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo',
-    'movies',
+    'movies.apps.MoviesConfig',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = '12345'
+EMAIL_HOST_USER = 'muhame732@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = '/movies'
+LOGOUT_REDIRECT_URL = '/movies'
